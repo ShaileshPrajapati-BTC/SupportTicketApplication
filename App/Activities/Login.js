@@ -6,6 +6,7 @@ import { Spinner, Container, Content, List, ListItem, InputGroup,
 
 import {AsyncStorage,StatusBar} from 'react-native'
 // import FCM from "react-native-fcm";
+const Item = Picker.Item;
 
 export default class Login extends Component {
 
@@ -16,34 +17,18 @@ export default class Login extends Component {
       // login: true,
       email: '',
       password: '',
+      selected1:"1"
       // fcm_token: ""
 
     };
 
   }
-  // componentDidMount () {
-
-  //   FCM.requestPermissions();
-
-  //   FCM.getFCMToken().then(token => {
-  //     this.setState({fcm_token:token});
-  //   });
-
-  //   this.checkLogin();
-  // }
-
-  // async checkLogin(){
-  //   AsyncStorage.getItem('current_user', (err, result) => {
-  //     current_user= JSON.parse(result)
-  //     if (result!=null){
-  //       this._navigate('Leaves',0);
-  //     }
-  //     else
-  //     {
-  //       this.setState({login: false});
-  //     }
-  //   });
-  // }
+  checkUser(){
+    if(this.state.selected1=="1")
+      this._navigate('Assets');
+    else
+      this._navigate('RHome');
+  }
   _navigate(name, index) {
     this.props.navigator.push({
       name: name,
@@ -53,44 +38,22 @@ export default class Login extends Component {
     })
   }
 
-  // async login(email,password){
-
-  //   let response = await fetch('http://192.168.0.105:3000/users/sign_in', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Accept': 'application/json',
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       user:{
-  //         email: this.state.email,
-  //         password: this.state.password,
-  //         fcm_token:this.state.fcm_token
-  //       }
-  //     })
-  //   });
-
-  //   let res = await response.json();
-
-  //   if (res.success==true)
-  //   {
-  //     AsyncStorage.setItem('current_user', JSON.stringify(res));
-  //     this._navigate('Leaves',0)
-  //   }
-  //   else
-  //     alert('Invalid email and password');
-  // }
+  onValueChange (value: string) {
+    this.setState({
+      selected1 : value
+    });
+  }
 
   render() {
     return (
       <Container >
-        <StatusBar
-              backgroundColor="red"
-              barStyle="light-content"
-            />
         <Content>
+          <StatusBar
+            backgroundColor="#4527a0"
+            barStyle="light-content"
+          />
           <List style={{ alignSelf: 'center', marginTop: 150, marginBottom: 20,width:300 }} >
-            <Thumbnail size={80} style={{ alignSelf: 'center',marginBottom: 20}} source={{uri:'https://s3.amazonaws.com/poly-screenshots.angel.co/enhanced_screenshots/514454-original.jpg'}} />
+            <Thumbnail size={100} style={{ alignSelf: 'center',marginBottom: 20}} source={require('../Images/support.png')}  />
             <ListItem >
               <InputGroup iconRight >
                   <Input placeholder='Email....' onChangeText={(text) => {this.setState({email: text})}}/>
@@ -101,7 +64,18 @@ export default class Login extends Component {
                   <Input placeholder='Password' secureTextEntry={true} onChangeText={(text) => {this.setState({password: text})}}/>
               </InputGroup>
             </ListItem>
-            <Button style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20,width:100 }} onPress={ () => this._navigate('Assets') }>
+            <ListItem>
+            <Text>User</Text>
+                <Picker
+                  iosHeader="Select one"
+                  mode="dropdown"
+                  selectedValue={this.state.selected1}
+                  onValueChange={this.onValueChange.bind(this)}>
+                  <Item label="Customer" value="1" />
+                  <Item label="Service Provider" value="2" />
+               </Picker>
+            </ListItem>
+            <Button style={{ backgroundColor:'#4527a0', alignSelf: 'center', marginTop: 20, marginBottom: 20,width:100 }} onPress={ () => this.checkUser() }>
              Login
             </Button>
           </List>

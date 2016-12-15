@@ -1,12 +1,10 @@
 import React,{Component} from 'react';
 import {  Container, Content, List, ListItem, Thumbnail, 
-          Text, Badge,Picker,Icon,InputGroup,Input,Button } from 'native-base';
+          Text, Badge,Picker,Icon,InputGroup,Input,Button,Footer,FooterTab } from 'native-base';
 
-import {
-  AsyncStorage,Modal,
-  StatusBar,View,ToastAndroid,Dimensions,Image
-} from 'react-native';
+
 import Drawer from './Drawer/Drawer.js'
+
 
 const Item = Picker.Item;
 
@@ -25,68 +23,76 @@ export default class Assets extends Component {
     })
   }
 
-  raiseSupportTicket(){
-    ToastAndroid.show('Your Ticket is Raised Successfully',ToastAndroid.LONG,ToastAndroid.CENTER,);
-    this._navigate('Home');    
-  }
-
-
-  onValueChange (value: string) {
-    this.setState({
-        selected1 : value
-    });
-  }
   render_assets() {
     return (
         <Container>
            <Content>
+            <List>
 
-              <Thumbnail circle size={80} style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20 }} source={require('../Images/support.png')} />
+              <ListItem itemDivider>
+                <Text>Assets</Text>
+              </ListItem> 
 
-              <List>
-                <ListItem iconLeft>
-                  <Icon name="md-list-box" style={{ color: '#4527a0' }} />
-                  <Text>Assets Type</Text>
-                  <Picker
-                    iosHeader="Select one"
-                    mode="dropdown"
-                    selectedValue={"1"}
-                    onValueChange={this.onValueChange.bind(this)}>
-                    <Item label="Hydraulic Excavators," value="1" />
-                    <Item label="Aggregate Crushers" value="2" />
-                    <Item label="Loader Backhoes" value="3" />
-                    <Item label="Compactor" value="4" />
-                 </Picker>
-                </ListItem>
+              <ListItem button>
+                  <Text>Turbine</Text>
+                  <Text note>9876543210</Text>
+              </ListItem>
+              <ListItem >
+                  <Text>Pelton Turbine</Text>
+                  <Text note>9876543211</Text>
+              </ListItem>
+              <ListItem >
+                  <Text>Reaction Turbines</Text>
+                  <Text note>9876543212</Text>
+              </ListItem>
+              <ListItem >
+                  <Text>Turbine</Text>
+                  <Text note>9876543210</Text>
+              </ListItem>
+              <ListItem >
+                  <Text>Pelton Turbine</Text>
+                  <Text note>9876543211</Text>
+              </ListItem>
+              <ListItem >
+                  <Text>Reaction Turbines</Text>
+                  <Text note>9876543212</Text>
+              </ListItem>
+              <ListItem >
+                  <Text>Turbine</Text>
+                  <Text note>9876543210</Text>
+              </ListItem>
+              <ListItem >
+                  <Text>Pelton Turbine</Text>
+                  <Text note>9876543211</Text>
+              </ListItem>
+              <ListItem >
+                  <Text>Reaction Turbines</Text>
+                  <Text note>9876543212</Text>
+              </ListItem>
 
-                <ListItem>
-                  <InputGroup>
-                    <Input placeholder="Asset Identification Number" keyboardType="numeric"/>
-                  </InputGroup>
-                </ListItem>
+            </List>  
+          </Content> 
 
-                <ListItem>
-                  <InputGroup >
-                      <Input multiline={true} stackedLabel label="Description"
-                      />
-                  </InputGroup>
-                </ListItem>
-              </List>
+          <Footer style={{backgroundColor:'#311b92'}}>
+            <FooterTab>
+                <Button active onPress={ () =>this._navigate('AddAsset')}>
+                    Add Assets
+                    <Icon name='md-add-circle' />
+                </Button>
+                <Button active onPress={ () =>this._navigate('RaiseTicket')}>
+                    Need Support
+                    <Icon name='md-help-circle' />
+                </Button>
+            </FooterTab>
+        </Footer> 
 
-              <Button style={{backgroundColor:'#4527a0', alignSelf: 'center', marginTop: 20, marginBottom: 20 }}
-                onPress={() => this.raiseSupportTicket()}>
-                <Icon name='ios-send' />
-                  Raise Support Ticket
-              </Button>
-
-          </Content>   
-         </Container>
+      </Container>
     );
   }
 
   render() {
       return(
-       <Drawer data={this.render_assets()} navigator={this.props.navigator}/>
-        );
+        <Drawer data={this.render_assets()} navigator={this.props.navigator}/>
+      );
   }
 }

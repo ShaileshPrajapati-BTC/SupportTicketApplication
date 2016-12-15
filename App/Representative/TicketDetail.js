@@ -33,9 +33,7 @@ export default class TicketDetail extends Component {
                   <Icon name='ios-arrow-back' />
               </Button>
               <Title>Ticket Details</Title>
-              <Button transparent onPress={() => {this._navigate('Feedback')}}>
-                  <Icon name='md-chatbubbles' />
-              </Button>
+              
           </Header>
            <StatusBar
            backgroundColor="#4527a0"
@@ -45,9 +43,9 @@ export default class TicketDetail extends Component {
              <View>
               <List>
                   <ListItem>
-                    <Thumbnail circle size={80} source={{uri: 'https://cdn1.iconfinder.com/data/icons/car-service-3/512/worker-512.png' }} />
-                    <Text>Shailesh Prajapati</Text>
-                    <Text note>From L&T </Text>
+                    <Thumbnail circle size={80} source={require('../Images/user.png')} />
+                    <Text>Santosh Prajapati</Text>
+                    <Text note>From Ahmedabad </Text>
                   </ListItem>
                   <ListItem>
                     <Text>Status</Text>
@@ -68,11 +66,11 @@ export default class TicketDetail extends Component {
                   </ListItem>
 
                   <ListItem itemDivider>
-                    <Text>Representative Contact Detail</Text>
+                    <Text>Customer Contact Detail</Text>
                   </ListItem>
                   <ListItem>
                     <Text>Name</Text>
-                    <Text note>Shailesh Prajapati</Text>
+                    <Text note>Santosh Prajapati</Text>
                   </ListItem> 
                   <ListItem>
                     <Text>Mobile No</Text>
@@ -91,7 +89,7 @@ export default class TicketDetail extends Component {
                         <CardItem>
                             <Thumbnail source={{uri: 'https://cdn1.iconfinder.com/data/icons/car-service-3/512/worker-512.png' }} />
                             <Text>Santosh</Text>
-                            <Text note>April 15, 2016</Text>
+                            <Text note>Dec 15, 2016</Text>
                         </CardItem>
 
                         <CardItem cardBody> 
