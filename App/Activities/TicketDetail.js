@@ -4,15 +4,16 @@ import { Footer,FooterTab, Header, Title, Button, Icon,
           Text, Badge, Card, CardItem, Spinner } from 'native-base';
 
 import {
-  AsyncStorage,Modal,
-  StatusBar,View,ToastAndroid,Dimensions,Image
+  BackAndroid,StatusBar,View,ToastAndroid,Image
 } from 'react-native';
 
+import StarRating from 'react-native-star-rating';
 
 export default class TicketDetail extends Component {
 
   constructor(props) {
     super(props);
+    this._handleBackBtnPress = this._handleBackBtnPress.bind(this);
   }
 
   _navigate(name) {
@@ -24,6 +25,18 @@ export default class TicketDetail extends Component {
     })
   }
 
+  componentWillMount(){
+    BackAndroid.addEventListener('backBtnPressed', this._handleBackBtnPress)
+  }
+
+  componentWillUnmount(){
+    BackAndroid.removeEventListener('backBtnPressed', this._handleBackBtnPress)
+  }
+
+  _handleBackBtnPress(){
+    this.props.navigator.pop();
+    return true;
+  }
   
   render() {
     return (
@@ -43,11 +56,27 @@ export default class TicketDetail extends Component {
           />
            <Content>
              <View>
+              <View style={{flex:1,flexDirection:'row',justifyContent:'center', alignItems:'center',left:10,height:100}}>
+                <Image source={{uri:'https://media.licdn.com/media/AAEAAQAAAAAAAAgzAAAAJDZjMmIxODk0LTNjNDktNDgyMi04OTY3LTNiMDU0YWE0ZjQwMw.jpg'}} style={{width: 60, height: 60,borderRadius: 30}}/>
+                <Text style={{left:10,bottom:10}}>Shailesh Prajapati</Text>
+                  <View style={{top:15,right:110}}>
+                   <StarRating
+                      disabled={true}
+                      starSize={15}
+                      emptyStar={'ios-star-outline'}
+                      fullStar={'ios-star'}
+                      halfStar={'ios-star-half'}
+                      iconSet={'Ionicons'}
+                      maxStars={5}
+                      rating={3}
+                      starColor={'#311b92'}
+                      selectedStar={(rating) => this.onStarRatingPress(rating)}
+                    /> 
+                  </View>
+               </View>
               <List>
-                  <ListItem>
-                    <Thumbnail circle size={80} source={{uri: 'https://cdn1.iconfinder.com/data/icons/car-service-3/512/worker-512.png' }} />
-                    <Text>Shailesh Prajapati</Text>
-                    <Text note>From L&T </Text>
+                  <ListItem itemDivider>
+                    <Text>Asset Detail</Text>
                   </ListItem>
                   <ListItem>
                     <Text>Status</Text>

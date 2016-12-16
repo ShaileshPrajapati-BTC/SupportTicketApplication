@@ -3,8 +3,7 @@ import {  Container, Content, List, ListItem, Thumbnail,
           Text, Title,Picker,Icon,InputGroup,Input,Button,Header } from 'native-base';
 
 import {
-  AsyncStorage,Modal,
-  StatusBar,View,ToastAndroid,Dimensions,Image,ScrollView
+  StatusBar,View,ToastAndroid,BackAndroid
 } from 'react-native';
 
 const Item = Picker.Item;
@@ -14,6 +13,20 @@ export default class Assets extends Component {
 
   constructor(props) {
     super(props);
+    this._handleBackBtnPress = this._handleBackBtnPress.bind(this);
+  }
+
+  componentWillMount(){
+    BackAndroid.addEventListener('backBtnPressed', this._handleBackBtnPress)
+  }
+
+  componentWillUnmount(){
+    BackAndroid.removeEventListener('backBtnPressed', this._handleBackBtnPress)
+  }
+
+  _handleBackBtnPress(){
+    this.props.navigator.pop();
+    return true;
   }
 
   _navigate(name) {

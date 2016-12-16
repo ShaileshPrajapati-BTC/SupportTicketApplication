@@ -3,8 +3,7 @@ import {  Container, Content, List, ListItem, Thumbnail,
           Text, Title,Picker,Icon,InputGroup,Input,Button,Header } from 'native-base';
 
 import {
-  AsyncStorage,Modal,
-  StatusBar,View,ToastAndroid,Dimensions,Image,ScrollView
+  StatusBar,View,ToastAndroid,BackAndroid
 } from 'react-native';
 
 const Item = Picker.Item;
@@ -14,6 +13,7 @@ export default class RaiseTicket extends Component {
 
   constructor(props) {
     super(props);
+    this._handleBackBtnPress = this._handleBackBtnPress.bind(this);
   }
 
   _navigate(name) {
@@ -23,6 +23,19 @@ export default class RaiseTicket extends Component {
         id: this.props.id
       }
     })
+  }
+
+  componentWillMount(){
+    BackAndroid.addEventListener('backBtnPressed', this._handleBackBtnPress)
+  }
+
+  componentWillUnmount(){
+    BackAndroid.removeEventListener('backBtnPressed', this._handleBackBtnPress)
+  }
+
+  _handleBackBtnPress(){
+    this.props.navigator.pop();
+    return true;
   }
 
   sendRequest(){

@@ -4,16 +4,33 @@ import { Footer,FooterTab, Header, Title, Button, Icon,
           Text, Badge, Card, CardItem, Spinner } from 'native-base';
 
 import {
-  AsyncStorage,Modal,
+  AsyncStorage,Modal,BackAndroid,
   StatusBar,View,ToastAndroid,Dimensions,Image
 } from 'react-native';
+
 
 
 export default class TicketDetail extends Component {
 
   constructor(props) {
     super(props);
+    this._handleBackBtnPress = this._handleBackBtnPress.bind(this)
+
   }
+
+  componentWillMount(){
+    BackAndroid.addEventListener('backBtnPressed', this._handleBackBtnPress)
+  }
+
+  componentWillUnmount(){
+    BackAndroid.removeEventListener('backBtnPressed', this._handleBackBtnPress)
+  }
+
+  _handleBackBtnPress(){
+    this.props.navigator.pop();
+    return true;
+  }
+
 
   _navigate(name) {
     this.props.navigator.push({
@@ -33,19 +50,32 @@ export default class TicketDetail extends Component {
                   <Icon name='ios-arrow-back' />
               </Button>
               <Title>Ticket Details</Title>
+              <Button transparent >
+                  <Icon name='md-checkmark-circle' />
+              </Button>
+              <Button transparent>
+                  <Icon name='md-close-circle' />
+              </Button>
               
           </Header>
            <StatusBar
            backgroundColor="#4527a0"
            barStyle="light-content"
           />
+   
            <Content>
              <View>
+               <View style={{flex:1,flexDirection:'row',justifyContent:'center', alignItems:'center',left:10,height:100}}>
+                <Image source={{uri:'https://media.licdn.com/media/AAEAAQAAAAAAAAgzAAAAJDZjMmIxODk0LTNjNDktNDgyMi04OTY3LTNiMDU0YWE0ZjQwMw.jpg'}} style={{width: 60, height: 60,borderRadius: 30}}/>
+                <Text style={{left:10,bottom:10}}>Santosh Sharama</Text>
+                  <View style={{top:15,right:110}}>
+                    
+                   <Text><Icon name='ios-pin' style={{fontSize: 20, color: '#311b92',right:10}}/>Ahmedabad</Text>
+                  </View>
+               </View>
               <List>
-                  <ListItem>
-                    <Thumbnail circle size={80} source={require('../Images/user.png')} />
-                    <Text>Santosh Prajapati</Text>
-                    <Text note>From Ahmedabad </Text>
+                  <ListItem itemDivider>
+                    <Text>Asset Detail</Text>
                   </ListItem>
                   <ListItem>
                     <Text>Status</Text>

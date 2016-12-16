@@ -36,7 +36,7 @@ export default class Menu extends Component {
               <Text style={{color:'white',left:10}}>Shailesh Prajapati</Text>
               <View style={{top:30,right:110}}>
                <StarRating
-                  disabled={false}
+                  disabled={true}
                   starSize={15}
                   emptyStar={'ios-star-outline'}
                   fullStar={'ios-star'}
@@ -45,6 +45,8 @@ export default class Menu extends Component {
                   maxStars={5}
                   rating={3}
                   starColor={'yellow'}
+                  selectedStar={(rating) => this.onStarRatingPress(rating)}
+
                 /> 
               </View>
           </View>

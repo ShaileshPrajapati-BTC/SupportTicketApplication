@@ -4,7 +4,7 @@ import { Spinner, Container, Content, List, ListItem, InputGroup,
          Thumbnail
        } from 'native-base';
 
-import {AsyncStorage,StatusBar} from 'react-native'
+import {AsyncStorage,StatusBar} from 'react-native';
 // import FCM from "react-native-fcm";
 const Item = Picker.Item;
 
