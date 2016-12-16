@@ -45,19 +45,27 @@ export default class TicketDetail extends Component {
   render() {
     return (
          <Container>
-          <Header backgroundColor="#311b92">
+         {this.props.id ?
+            <Header backgroundColor="#311b92">
               <Button transparent onPress={() => {this.props.navigator.pop()}}>
                   <Icon name='ios-arrow-back' />
               </Button>
               <Title>Ticket Details</Title>
+
               <Button transparent >
                   <Icon name='md-checkmark-circle' />
               </Button>
               <Button transparent>
                   <Icon name='md-close-circle' />
               </Button>
-              
-          </Header>
+            </Header>:
+            <Header backgroundColor="#311b92">
+              <Button transparent onPress={() => {this.props.navigator.pop()}}>
+                  <Icon name='ios-arrow-back' />
+              </Button>
+              <Title>Ticket Details</Title>
+            </Header>
+          }
            <StatusBar
            backgroundColor="#4527a0"
            barStyle="light-content"
@@ -65,22 +73,14 @@ export default class TicketDetail extends Component {
    
            <Content>
              <View>
-               <View style={{flex:1,flexDirection:'row',justifyContent:'center', alignItems:'center',left:10,height:100}}>
-                <Image source={{uri:'https://media.licdn.com/media/AAEAAQAAAAAAAAgzAAAAJDZjMmIxODk0LTNjNDktNDgyMi04OTY3LTNiMDU0YWE0ZjQwMw.jpg'}} style={{width: 60, height: 60,borderRadius: 30}}/>
-                <Text style={{left:10,bottom:10}}>Santosh Sharama</Text>
-                  <View style={{top:15,right:110}}>
-                    
-                   <Text><Icon name='ios-pin' style={{fontSize: 20, color: '#311b92',right:10}}/>Ahmedabad</Text>
-                  </View>
-               </View>
               <List>
                   <ListItem itemDivider>
                     <Text>Asset Detail</Text>
                   </ListItem>
                   <ListItem>
                     <Text>Status</Text>
-                     {this.props.id ? <Badge success>Resolved</Badge> :
-                                      <Badge warning> Addressed </Badge> }
+                     {this.props.id ? <Badge warning>Addressed </Badge> :
+                                      <Badge success>  Resolved</Badge> }
                   </ListItem>
                   <ListItem>
                     <Text>Raised Date</Text>

@@ -63,7 +63,7 @@ export default class RaiseTicket extends Component {
            barStyle="light-content"
           />
           <Content>
-            <Thumbnail circle size={80} style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20 }} source={require('../Images/support.png')} />
+            <View style={{top:20}}>            
               <List>
                 <ListItem iconLeft>
                   <Icon name="md-list-box" style={{ color: '#4527a0' }} />
@@ -98,7 +98,7 @@ export default class RaiseTicket extends Component {
                 <Icon name='ios-send' />
                   Raise Support Ticket
               </Button>
-
+            </View>
           </Content> 
       </Container>
     );

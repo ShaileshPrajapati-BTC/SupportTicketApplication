@@ -28,7 +28,6 @@ export default class Menu extends Component {
       <Content>
         <Image style={{ height: 150}}source={{uri: 'https://fedoraproject.org/w/uploads/6/6b/Artwork_F8Themes_Infinity_Round3Scratch_infinitelines-plain.png'}}>
           <View style={{flex:1,flexDirection:'column', justifyContent:'center', alignItems:'center',padding:30}}>
-              <Image source={{uri:'https://media.licdn.com/media/AAEAAQAAAAAAAAgzAAAAJDZjMmIxODk0LTNjNDktNDgyMi04OTY3LTNiMDU0YWE0ZjQwMw.jpg'}} style={{width: 50, height: 50,borderRadius: 25}}/>
               <Text style={{top:10,color:'white'}}>Shailesh Prajapati</Text>
           </View>
         </Image>

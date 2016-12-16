@@ -5,7 +5,7 @@ import {
   View,
   TouchableOpacity,RefreshControl
 } from 'react-native';
-import IconTabs from 'react-native-vector-icons/Ionicons';
+import IconTabs from 'react-native-vector-icons/Foundation';
 import { Container, Header, Title, Button,Icon } from 'native-base';
 
 const Tabs = React.createClass({

@@ -11,6 +11,43 @@ import {
   Divider,Row,Caption,View,Button
 } from '@shoutem/ui';
 
+import Accordion from 'react-native-accordion';
+
+const ticket_data =[
+{
+  name:"Santosh Sharama",
+  date:"Dec 8  ·  18:00"
+},
+{
+  name:"Shailesh Prajapati",
+  date:"Dec 9  ·  12:00"
+},
+{
+  name:"Chetan Tomar",
+  date:"Dec 10  ·  07:00"
+},
+
+{
+  name:"Ankur Vyas",
+  date:"Dec 11  ·  08:00"
+},
+{
+  name:"Jay Pandya",
+  date:"Dec 11  ·  09:00"
+},
+{
+  name:"Anil Patel",
+  date:"Dec 12  ·  09:00"
+},
+{
+  name:"Anil Patel",
+  date:"Dec 12  ·  09:00"
+},
+{
+  name:"Anil Patel",
+  date:"Dec 12  ·  09:00"
+}
+];
 
 export default class CurrentTickets extends Component {
 
@@ -27,18 +64,13 @@ export default class CurrentTickets extends Component {
       const { onButtonPress } = this.props;
 
       return (
-      <TouchableOpacity onPress={() => this._navigate('RTicketDetail')}>
+      <TouchableOpacity onPress={() => this._navigate('RTicketDetail',1)}>
         <Row>
-          <Image
-            styleName="small rounded-corners"
-            source={require('../Images/user.png')}
-          />
-          <View styleName="vertical stretch space-between">
-            <Subtitle>Wilco Cover David Bowie&#39;s "Space Oddity"</Subtitle>
-            <Caption>June 21  ·  20:00</Caption>
+          <Icon  name="md-document" style={{color:'#311b92'}}/>
+          <View styleName="vertical stretch space-between" style={{left:10}}>
+            <Subtitle>{ticket.name}</Subtitle>
+            <Caption>{ticket.date}</Caption>
           </View>
-          <Button styleName="right-icon"><Icon name="md-checkmark-circle" style={{color:'green'}}/></Button>
-          <Button styleName="right-icon"><Icon name="md-close-circle" style={{color:'red'}}/></Button>
         </Row>
         <Divider styleName="line" />
       </TouchableOpacity>
@@ -49,7 +81,7 @@ export default class CurrentTickets extends Component {
         <Screen>
         
           <ListView
-            data={[1,2,3,4,5,6]}
+            data={ticket_data}
             renderRow={ticket => this.renderRow(ticket)}
           />
       </Screen>

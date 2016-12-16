@@ -56,24 +56,6 @@ export default class TicketDetail extends Component {
           />
            <Content>
              <View>
-              <View style={{flex:1,flexDirection:'row',justifyContent:'center', alignItems:'center',left:10,height:100}}>
-                <Image source={{uri:'https://media.licdn.com/media/AAEAAQAAAAAAAAgzAAAAJDZjMmIxODk0LTNjNDktNDgyMi04OTY3LTNiMDU0YWE0ZjQwMw.jpg'}} style={{width: 60, height: 60,borderRadius: 30}}/>
-                <Text style={{left:10,bottom:10}}>Shailesh Prajapati</Text>
-                  <View style={{top:15,right:110}}>
-                   <StarRating
-                      disabled={true}
-                      starSize={15}
-                      emptyStar={'ios-star-outline'}
-                      fullStar={'ios-star'}
-                      halfStar={'ios-star-half'}
-                      iconSet={'Ionicons'}
-                      maxStars={5}
-                      rating={3}
-                      starColor={'#311b92'}
-                      selectedStar={(rating) => this.onStarRatingPress(rating)}
-                    /> 
-                  </View>
-               </View>
               <List>
                   <ListItem itemDivider>
                     <Text>Asset Detail</Text>
@@ -133,8 +115,6 @@ export default class TicketDetail extends Component {
                             </Button>
                         </CardItem>
                    </Card>
-
-
               </List>
             </View>
            </Content>

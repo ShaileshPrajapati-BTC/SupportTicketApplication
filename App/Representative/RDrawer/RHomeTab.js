@@ -21,13 +21,13 @@ export default class HomeTab extends Component{
         initialPage={this.props.index}
         renderTabBar={() => <Tabs name={Tabname} />}
       >
-        <ScrollView tabLabel="md-construct">
+        <ScrollView tabLabel="page">
           <CurrentTickets navigator={this.props.navigator}/>
         </ScrollView>
-        <ScrollView tabLabel="md-close-circle">
+        <ScrollView tabLabel="page-delete">
           <OldTickets navigator={this.props.navigator}/>
         </ScrollView>
-        <ScrollView tabLabel="md-done-all">
+        <ScrollView tabLabel="page-filled">
           <OldTickets navigator={this.props.navigator}/>
         </ScrollView>
     </ScrollableTabView>

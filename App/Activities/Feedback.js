@@ -53,7 +53,7 @@ export default class Feedback extends Component {
 
   sendRequest(){
     ToastAndroid.show('Your Feedback is Successfully Saved',ToastAndroid.LONG,ToastAndroid.CENTER,);
-    this._navigate('TicketDetail');    
+    this.props.navigator.pop();
   }
 
   onValueChange (value: string) {
@@ -76,7 +76,7 @@ export default class Feedback extends Component {
            barStyle="light-content"
           />
           <Content>
-            <Thumbnail circle size={80} style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20 }} source={require('../Images/support.png')} />           
+            <View style={{top:20}}>
               <List>
                 <ListItem>
                    <StarRating
@@ -116,7 +116,7 @@ export default class Feedback extends Component {
                 <Icon name='ios-send' />
                   Give Feedback
               </Button>
-
+            </View>
           </Content> 
       </Container>
     );
