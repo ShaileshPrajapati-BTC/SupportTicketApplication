@@ -47,37 +47,37 @@ export default class OldTickets extends Component {
         <Container>
                 <Content>
                     <List>
-                        <ListItem onPress={ () => this._navigate('TicketDetail',1)}>
+                        <ListItem>
                           <Thumbnail source={require('../Images/note.png')} />
-                          <Text>Pelton Turbine</Text>
+                          <Text onPress={ () => this._navigate('TicketDetail',1)}>Pelton Turbine</Text>
                           <Text note>Dec 15 - 20:00</Text>
                           <Accordion
                             underlayColor="white"
-                            header={<View><Icon  name="ios-arrow-down-outline" style={{color:'#311b92',left:260,fontSize:15}}/></View>}
+                            header={<View><Icon  name="ios-arrow-down-outline" style={{color:'#311b92',left:260,fontSize:20}}/></View>}
                             content={this.render_content()}
                             easing="easeOutCubic"
                           />
                         </ListItem>
 
-                        <ListItem onPress={ () => this._navigate('TicketDetail',1)}>
+                        <ListItem>
                           <Thumbnail source={require('../Images/note.png')} />
-                            <Text>Reaction Turbines</Text>
+                            <Text onPress={ () => this._navigate('TicketDetail',1)}>Reaction Turbines</Text>
                             <Text note>Dec 14 - 18:00</Text>
                             <Accordion
                               underlayColor="white"
-                              header={<View><Icon  name="ios-arrow-down-outline" style={{color:'#311b92',left:260,fontSize:15}}/></View>}
+                              header={<View><Icon  name="ios-arrow-down-outline" style={{color:'#311b92',left:260,fontSize:20}}/></View>}
                               content={this.render_content()}
                               easing="easeOutCubic"
                             />
                         </ListItem>
 
-                        <ListItem onPress={ () => this._navigate('TicketDetail',1)}>
+                        <ListItem>
                           <Thumbnail source={require('../Images/note.png')} />
-                            <Text>Pelton Turbine</Text>
+                            <Text onPress={ () => this._navigate('TicketDetail',1)}>Pelton Turbine</Text>
                             <Text note>Nov 14 - 18:00</Text>
                             <Accordion
                               underlayColor="white"
-                              header={<View><Icon  name="ios-arrow-down-outline" style={{color:'#311b92',left:260,fontSize:15}}/></View>}
+                              header={<View><Icon  name="ios-arrow-down-outline" style={{color:'#311b92',left:260,fontSize:20}}/></View>}
                               content={this.render_content()}
                               easing="easeOutCubic"
                             />

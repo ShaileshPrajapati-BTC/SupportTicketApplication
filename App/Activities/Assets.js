@@ -33,7 +33,7 @@ export default class Assets extends Component {
                 <Text>Assets</Text>
               </ListItem> 
 
-              <ListItem button>
+              <ListItem >
                   <Text>Turbine</Text>
                   <Text note>9876543210</Text>
               </ListItem>
