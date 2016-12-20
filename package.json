@@ -12,6 +12,7 @@
     "react": "15.4.1",
     "react-native": "0.39.2",
     "react-native-accordion": "^1.0.1",
+    "react-native-action-button": "^2.0.16",
     "react-native-drawer": "^2.3.0",
     "react-native-scrollable-tab-view": "^0.7.0",
     "react-native-star-rating": "^1.0.6"

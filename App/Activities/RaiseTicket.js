@@ -13,6 +13,10 @@ export default class RaiseTicket extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      selected1:"1"
+    };
+    
     this._handleBackBtnPress = this._handleBackBtnPress.bind(this);
   }
 
@@ -65,13 +69,13 @@ export default class RaiseTicket extends Component {
           <Content>
             <View style={{top:20}}>            
               <List>
-                <ListItem iconLeft>
-                  <Icon name="md-list-box" style={{ color: '#4527a0' }} />
-                  <Text>Assets Type</Text>
+                <Text style={{left:29}}>Assets Type</Text>
+                <ListItem >
                   <Picker
+                    style={{width:320,right:5}}
                     iosHeader="Select one"
                     mode="dropdown"
-                    selectedValue={"1"}
+                    selectedValue={this.state.selected1}
                     onValueChange={this.onValueChange.bind(this)}>
                     <Item label="Hydraulic Excavators," value="1" />
                     <Item label="Aggregate Crushers" value="2" />
@@ -79,10 +83,10 @@ export default class RaiseTicket extends Component {
                     <Item label="Compactor" value="4" />
                  </Picker>
                 </ListItem>
-
+                
                 <ListItem>
                   <InputGroup>
-                    <Input placeholder="Asset Identification Number" keyboardType="numeric"/>
+                    <Input stackedLabel label="Asset Identification Number" keyboardType="numeric"/>
                   </InputGroup>
                 </ListItem>
 

@@ -21,9 +21,12 @@ export default class DrawerBar extends Component {
   openDrawer = () => {
     this._drawer.open()
   };
+  componentWillUnmount(){
+    console.log('close');
+  }
   // _onActionSelected = (position) => {
   //   this.props.navigator.push({
-  //       name: 'Notification',
+  //       name: 'RAddAsset',
   //       passProps: {
   //         name: 'name'
   //       }
@@ -63,12 +66,10 @@ export default class DrawerBar extends Component {
           <View style={{flex:1, flexDirection: 'column'}} >
             <View style={{backgroundColor: '#311b92',elevation: 3,borderTopColor:'black',borderTopWidth:0.2}} >
               <VIcon.ToolbarAndroid
-                navIconName="ios-menu"
-                title="Support Ticket"
+                navIconName="md-menu"
+                title="Tickets"
                 titleColor="white"
-                actions={[{title:'Notifications', iconName: 'ios-notifications', iconSize: 30, show: 'always'}]}
                 onIconClicked={() => {this.openDrawer()}}
-                onActionSelected={this._onActionSelected}
               >
 
                 <View style={{height: 56, flexDirection: 'row', alignItems: 'center'}}>

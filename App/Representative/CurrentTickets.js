@@ -16,46 +16,63 @@ import Accordion from 'react-native-accordion';
 const ticket_data =[
 {
   name:"Santosh Sharama",
-  date:"Dec 8  ·  18:00"
+  date:"Dec 15  ·  18:00",
+  asset:"Electric Motor GI Casting Parts",
+  id:"987654321"
 },
 {
   name:"Shailesh Prajapati",
-  date:"Dec 9  ·  12:00"
+  date:"Dec 14  ·  12:00",
+  asset:"Water Pump Component",
+  id:"987654322"
 },
 {
   name:"Chetan Tomar",
-  date:"Dec 10  ·  07:00"
+  date:"Dec 11  ·  07:00",
+  asset:"Submersible Pump Impeller",
+  id:"987654323"
 },
 
 {
   name:"Ankur Vyas",
-  date:"Dec 11  ·  08:00"
+  date:"Dec 8  ·  08:00",
+  asset:"CI Pump Casting",
+  id:"987654324"
 },
 {
   name:"Jay Pandya",
-  date:"Dec 11  ·  09:00"
+  date:"Dec 6  ·  09:00",
+  asset:"Electric Motor GI Casting Parts",
+  id:"987654325"
 },
 {
   name:"Anil Patel",
-  date:"Dec 12  ·  09:00"
+  date:"Dec 4  ·  09:00",
+  asset:"Pelton Turbines",
+  id:"987654326"
 },
 {
-  name:"Anil Patel",
-  date:"Dec 12  ·  09:00"
+  name:"Dharmin Shah",
+  date:"Dec 2  ·  09:00",
+  asset:"Electric Motor GI Casting Parts",
+  id:"987654327"
 },
 {
-  name:"Anil Patel",
-  date:"Dec 12  ·  09:00"
+  name:"Ketan Sharama",
+  date:"Nov 28 ·  09:00",
+  asset:"Pelton Turbines",
+  id:"987654328"
 }
 ];
 
 export default class CurrentTickets extends Component {
 
-    _navigate(name,id) {
+    _navigate(name,id,ticket) {
       this.props.navigator.push({
         name: name,
         passProps: {
-          id: id
+          id: id,
+          data: ticket
         }
       })
     }
@@ -64,7 +81,7 @@ export default class CurrentTickets extends Component {
       const { onButtonPress } = this.props;
 
       return (
-      <TouchableOpacity onPress={() => this._navigate('RTicketDetail',1)}>
+      <TouchableOpacity onPress={() => this._navigate('RTicketDetail',1,ticket)}>
         <Row>
           <Icon  name="md-document" style={{color:'#311b92'}}/>
           <View styleName="vertical stretch space-between" style={{left:10}}>

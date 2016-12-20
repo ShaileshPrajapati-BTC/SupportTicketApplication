@@ -43,7 +43,7 @@ export default class Assets extends Component {
 
   sendRequest(){
     ToastAndroid.show('Your Asset is Added Successfully',ToastAndroid.LONG,ToastAndroid.CENTER,);
-    this._navigate('Assets');    
+    this.props.navigator.pop();
   }
 
   onValueChange (value: string) {
@@ -82,15 +82,17 @@ export default class Assets extends Component {
                     <Item label="Compactor" value="4" />
                  </Picker>
                 </ListItem>
+
                 <ListItem>
                   <InputGroup>
                     <Input stackedLabel label="Asset Name"/>
-                  </InputGroup> 
+                  </InputGroup>
                 </ListItem>
+
                 <ListItem>
                   <InputGroup>
                     <Input stackedLabel label="Asset Identification Number" keyboardType="numeric"/>
-                  </InputGroup> 
+                  </InputGroup>
                 </ListItem>
 
                 <ListItem>

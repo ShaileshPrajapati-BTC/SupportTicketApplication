@@ -56,7 +56,7 @@ export default class Login extends Component {
             <Thumbnail size={100} style={{ alignSelf: 'center',marginBottom: 20}} source={require('../Images/support.png')}  />
             <ListItem >
               <InputGroup iconRight >
-                  <Input placeholder='Email....' onChangeText={(text) => {this.setState({email: text})}}/>
+                  <Input placeholder='Email' onChangeText={(text) => {this.setState({email: text})}}/>
               </InputGroup>
             </ListItem>
             <ListItem >
@@ -64,17 +64,15 @@ export default class Login extends Component {
                   <Input placeholder='Password' secureTextEntry={true} onChangeText={(text) => {this.setState({password: text})}}/>
               </InputGroup>
             </ListItem>
-            <ListItem>
-            <Text>User</Text>
                 <Picker
+                  style={{width:280,left:19}}
                   iosHeader="Select one"
                   mode="dropdown"
                   selectedValue={this.state.selected1}
                   onValueChange={this.onValueChange.bind(this)}>
-                  <Item label="Customer" value="1" />
-                  <Item label="Service Provider" value="2" />
+                  <Item label="Customer" value="1" style={{fontSize:12}}/>
+                  <Item label="Service Provider" value="2" style={{fontSize:12}} />
                </Picker>
-            </ListItem>
             <Button style={{ backgroundColor:'#4527a0', alignSelf: 'center', marginTop: 20, marginBottom: 20,width:100 }} onPress={ () => this.checkUser() }>
              Login
             </Button>

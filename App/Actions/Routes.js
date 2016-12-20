@@ -6,9 +6,14 @@ import TicketDetail from '../Activities/TicketDetail.js';
 import Assets from '../Activities/Assets.js';
 import AddAsset from '../Activities/AddAsset.js';
 import RaiseTicket from '../Activities/RaiseTicket.js';
+import  AssetTickets from '../Activities/AssetTickets.js';
 import Feedback from '../Activities/Feedback.js';
+
 import RHome from '../Representative/RHome.js';
 import RTicketDetail from '../Representative/TicketDetail.js';
+import RAssets from '../Representative/Assets.js';
+import RAddAsset from '../Representative/AddAsset.js';
+import RAssetTickets from '../Representative/AssetTickets.js';
 
 
 exports.renderScene = function(route, navigator) {
@@ -38,6 +43,18 @@ exports.renderScene = function(route, navigator) {
   }
   if(route.name == 'RTicketDetail') {
     return <RTicketDetail navigator={navigator} {...route.passProps}  />
+  }
+  if(route.name == 'AssetTickets') {
+    return <AssetTickets navigator={navigator} {...route.passProps}  />
+  }
+  if(route.name == 'RAssets') {
+    return <RAssets navigator={navigator} {...route.passProps}  />
+  }
+  if(route.name == 'RAddAsset') {
+    return <RAddAsset navigator={navigator} {...route.passProps}  />
+  }
+  if(route.name == 'RAssetTickets') {
+    return <RAssetTickets navigator={navigator} {...route.passProps}  />
   }
 };
 

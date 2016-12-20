@@ -11,36 +11,14 @@ import {
   Divider,Row,Caption,View,Button
 } from '@shoutem/ui';
 
-const ticket_data =[
-{
-  name:"Santosh Sharama",
-  date:"Dec 8  ·  18:00"
-},
-{
-  name:"Shailesh Prajapati",
-  date:"Dec 9  ·  12:00"
-},
-{
-  name:"Chetan Tomar",
-  date:"Dec 10  ·  07:00"
-},
 
-{
-  name:"Ankur Vyas",
-  date:"Dec 11  ·  08:00"
-},
-{
-  name:"Jay Pandya",
-  date:"Dec 11  ·  09:00"
-}
-];
 export default class OldTickets extends Component {
 
-    _navigate(name,id) {
+    _navigate(name,ticket) {
       this.props.navigator.push({
         name: name,
         passProps: {
-          id: id
+          data: ticket
         }
       })
     }
@@ -49,7 +27,7 @@ export default class OldTickets extends Component {
       const { onButtonPress } = this.props;
 
       return (
-      <TouchableOpacity onPress={() => this._navigate('RTicketDetail')}>
+      <TouchableOpacity onPress={() => this._navigate('RTicketDetail',ticket)}>
         <Row>
           <Icon  name="md-document" />
           <View styleName="vertical stretch space-between" style={{left:10}}>
@@ -66,10 +44,10 @@ export default class OldTickets extends Component {
       return(
         <Screen>
           <ListView
-            data={ticket_data}
+            data={this.props.data}
             renderRow={ticket => this.renderRow(ticket)}
           />
-      </Screen>
+        </Screen>
         );
     }
 }

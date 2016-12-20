@@ -4,7 +4,7 @@ import { Container, Content,Header, Title, Button, Icon, Text,Footer, FooterTab,
 import {
   AsyncStorage,
   StatusBar,
-  RefreshControl
+  RefreshControl,BackAndroid
 } from 'react-native';
 
 import Drawer from './Drawer/Drawer.js'
@@ -18,6 +18,7 @@ export default class Home extends Component {
       this.state = {
             active: 'true'
         };
+      this._handleBackBtnPress = this._handleBackBtnPress.bind(this);
     }
 
     _navigate(name) {
@@ -28,6 +29,19 @@ export default class Home extends Component {
         }
       })
     }
+
+  componentWillMount(){
+    BackAndroid.addEventListener('backBtnPressed', this._handleBackBtnPress)
+  }
+
+  componentWillUnmount(){
+    BackAndroid.removeEventListener('backBtnPressed', this._handleBackBtnPress)
+  }
+
+  _handleBackBtnPress(){
+    console.log('bcalk');
+    BackAndroid.exitApp(0);
+  }
     
     render_home() {
       return(
@@ -37,7 +51,7 @@ export default class Home extends Component {
 
     render() {
       return(
-       <Drawer data={this.render_home()} navigator={this.props.navigator}/>
+       <Drawer data={this.render_home()} navigator={this.props.navigator} Title={'Tickets'}/>
         );
     }
 

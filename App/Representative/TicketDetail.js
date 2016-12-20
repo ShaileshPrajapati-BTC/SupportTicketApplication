@@ -7,6 +7,7 @@ import {
   AsyncStorage,Modal,BackAndroid,
   StatusBar,View,ToastAndroid,Dimensions,Image
 } from 'react-native';
+import StarRating from 'react-native-star-rating';
 
 
 
@@ -41,6 +42,13 @@ export default class TicketDetail extends Component {
     })
   }
 
+  ticket_req(id){
+    if (id==1)
+      ToastAndroid.show('Ticket is Accepted',ToastAndroid.LONG,ToastAndroid.CENTER,);
+    else
+      ToastAndroid.show('Ticket is Rejected',ToastAndroid.LONG,ToastAndroid.CENTER,);
+    this.props.navigator.pop()
+  }
   
   render() {
     return (
@@ -53,10 +61,10 @@ export default class TicketDetail extends Component {
               <Title>Ticket Details</Title>
 
               <Button transparent >
-                  <Icon name='md-checkmark-circle' />
+                  <Icon name='md-checkmark' onPress={() => {this.ticket_req(1)}}/>
               </Button>
               <Button transparent>
-                  <Icon name='md-close-circle' />
+                  <Icon name='md-close' onPress={() => {this.ticket_req(2)}}/>
               </Button>
             </Header>:
             <Header backgroundColor="#311b92">
@@ -84,15 +92,15 @@ export default class TicketDetail extends Component {
                   </ListItem>
                   <ListItem>
                     <Text>Raised Date</Text>
-                    <Text note>13-12-2016</Text>
+                    <Text note>{this.props.data.date}</Text>
                   </ListItem>
                   <ListItem>
-                    <Text>Asset Type</Text>
-                    <Text note>Aggregate Crushers</Text>
+                    <Text>Asset Name</Text>
+                    <Text note>{this.props.data.asset}</Text>
                   </ListItem>
                   <ListItem>
                     <Text>Asset Identification Number</Text>
-                    <Text note>875621620</Text>
+                    <Text note>{this.props.data.id}</Text>
                   </ListItem>
 
                   <ListItem itemDivider>
@@ -100,7 +108,7 @@ export default class TicketDetail extends Component {
                   </ListItem>
                   <ListItem>
                     <Text>Name</Text>
-                    <Text note>Santosh Prajapati</Text>
+                    <Text note>{this.props.data.name}</Text>
                   </ListItem> 
                   <ListItem>
                     <Text>Mobile No</Text>
@@ -115,25 +123,30 @@ export default class TicketDetail extends Component {
                     <Text>Feedback</Text>
                   </ListItem>
 
-                  <Card style={{ flex: 0 }}>
-                        <CardItem>
-                            <Thumbnail source={{uri: 'https://cdn1.iconfinder.com/data/icons/car-service-3/512/worker-512.png' }} />
-                            <Text>Santosh</Text>
-                            <Text note>Dec 15, 2016</Text>
-                        </CardItem>
-
-                        <CardItem cardBody> 
-                            <Text style={{left:40}}>
-                                Thank you very much for your supports
-                            </Text>
-                            <Button transparent textStyle={{color: '#87838B'}} style={{left:30}}>
-                                <Icon name="md-star-outline" />
-                                <Text>3 stars</Text>
-                            </Button>
-                        </CardItem>
-                   </Card>
-
-
+                   <ListItem>
+                      <Thumbnail source={{uri: 'https://cdn1.iconfinder.com/data/icons/car-service-3/512/worker-512.png' }} />
+                      <Text>{this.props.data.name}</Text>
+                      <Text note>{this.props.data.date}</Text>
+                      <View style={{width:80}}>
+                      <StarRating
+                        disabled={true}
+                        starSize={15}
+                        emptyStar={'ios-star-outline'}
+                        fullStar={'ios-star'}
+                        halfStar={'ios-star-half'}
+                        iconSet={'Ionicons'}
+                        maxStars={5}
+                        rating={3}
+                        starColor={'#311b92'}
+                        selectedStar={(rating) => this.onStarRatingPress(rating)}
+                      /></View>
+                  </ListItem>
+                  <ListItem cardBody> 
+                      <Text style={{left:40}}>
+                          Thank you very much for your supports
+                      </Text>
+                      
+                  </ListItem>
               </List>
             </View>
            </Content>

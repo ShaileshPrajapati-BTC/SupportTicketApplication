@@ -67,15 +67,15 @@ export default class TicketDetail extends Component {
                   </ListItem>
                   <ListItem>
                     <Text>Raised Date</Text>
-                    <Text note>13-12-2016</Text>
+                    <Text note>{this.props.ticket.date}</Text>
                   </ListItem>
                   <ListItem>
-                    <Text>Asset Type</Text>
-                    <Text note>Aggregate Crushers</Text>
+                    <Text>Asset Name</Text>
+                    <Text note>{this.props.ticket.asset}</Text>
                   </ListItem>
                   <ListItem>
                     <Text>Asset Identification Number</Text>
-                    <Text note>875621620</Text>
+                    <Text note>{this.props.ticket.id}</Text>
                   </ListItem>
 
                   <ListItem itemDivider>
@@ -83,7 +83,7 @@ export default class TicketDetail extends Component {
                   </ListItem>
                   <ListItem>
                     <Text>Name</Text>
-                    <Text note>Shailesh Prajapati</Text>
+                    <Text note>{this.props.ticket.name}</Text>
                   </ListItem> 
                   <ListItem>
                     <Text>Mobile No</Text>
@@ -97,24 +97,30 @@ export default class TicketDetail extends Component {
                    <ListItem itemDivider>
                     <Text>Feedback</Text>
                   </ListItem>
-
-                  <Card style={{ flex: 0 }}>
-                        <CardItem>
-                            <Thumbnail source={{uri: 'https://cdn1.iconfinder.com/data/icons/car-service-3/512/worker-512.png' }} />
-                            <Text>Santosh</Text>
-                            <Text note>April 15, 2016</Text>
-                        </CardItem>
-
-                        <CardItem cardBody> 
-                            <Text style={{left:40}}>
-                                Thank you very much for your supports
-                            </Text>
-                            <Button transparent textStyle={{color: '#87838B'}} style={{left:30}}>
-                                <Icon name="md-star-outline" />
-                                <Text>3 stars</Text>
-                            </Button>
-                        </CardItem>
-                   </Card>
+                  <ListItem>
+                      <Thumbnail source={{uri: 'https://cdn1.iconfinder.com/data/icons/car-service-3/512/worker-512.png' }} />
+                      <Text>Customer</Text>
+                      <Text note>April 15, 2016</Text>
+                      <View style={{width:80}}>
+                      <StarRating
+                        disabled={true}
+                        starSize={15}
+                        emptyStar={'ios-star-outline'}
+                        fullStar={'ios-star'}
+                        halfStar={'ios-star-half'}
+                        iconSet={'Ionicons'}
+                        maxStars={5}
+                        rating={this.props.ticket.rate}
+                        starColor={'#311b92'}
+                        selectedStar={(rating) => this.onStarRatingPress(rating)}
+                      /></View>
+                  </ListItem>
+                  <ListItem cardBody> 
+                      <Text style={{left:40}}>
+                          Thank you very much for your supports
+                      </Text>
+                      
+                  </ListItem>
               </List>
             </View>
            </Content>

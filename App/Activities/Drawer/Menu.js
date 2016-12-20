@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 
-import { Container, Content, CardItem, Card, Text, Icon, Badge, Thumbnail } from 'native-base';
+import { Container, Content, ListItem, List, Text, Icon, Badge, Thumbnail } from 'native-base';
 
 import {
   View,Image,AsyncStorage
@@ -16,9 +16,16 @@ export default class Menu extends Component {
   }
 
   _navigate(name) {
-    this.props.navigator.push({
-      name: name,
-    })
+    let routes = this.props.navigator.getCurrentRoutes();
+    if (routes[routes.length-1].name==name){
+       this.props.closeDrawer();
+    }
+    else{
+      this.props.closeDrawer();
+      this.props.navigator.push({
+        name: name,
+      })
+    }
   }
 
   render() {
@@ -28,27 +35,27 @@ export default class Menu extends Component {
       <Content>
         <Image style={{ height: 150}}source={{uri: 'https://fedoraproject.org/w/uploads/6/6b/Artwork_F8Themes_Infinity_Round3Scratch_infinitelines-plain.png'}}>
           <View style={{flex:1,flexDirection:'column', justifyContent:'center', alignItems:'center',padding:30}}>
-              <Text style={{top:10,color:'white'}}>Shailesh Prajapati</Text>
+              <Text style={{top:10,color:'white'}}>Sudhir Joshi</Text>
           </View>
         </Image>
 
-        <Card>
+        <List>
 
-          <CardItem button onPress={ () => this._navigate('Assets') }> 
-            <Icon name="md-send" style={{ color: '#311b92' }} />
-            <Text>Raise Support Ticket</Text>
-          </CardItem>
+          <ListItem button onPress={ () => this._navigate('Assets') }> 
+            <Icon name="md-list-box" style={{ color: '#311b92'}} />
+            <Text style={{left:10}}>My Assets</Text>
+          </ListItem>
 
-          <CardItem button onPress={ () => this._navigate('Home') }> 
+          <ListItem button onPress={ () => this._navigate('Home') }> 
             <Icon name="md-document" style={{ color: '#311b92' }} />
-            <Text>Tickets</Text>
-          </CardItem>
+            <Text style={{left:10}}>Tickets</Text>
+          </ListItem>
 
-          <CardItem iconLeft button onPress={ () => this._navigate('Login') }>
+          <ListItem button onPress={ () => this._navigate('Login') }>
             <Icon name="md-log-out" style={{ color: '#311b92' }} />
-            <Text>Logout</Text>
-          </CardItem>
-        </Card>
+            <Text style={{left:10}}>Logout</Text>
+          </ListItem>
+        </List>
       </Content>
     </Container>
     )
