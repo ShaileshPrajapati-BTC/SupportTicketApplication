@@ -6,7 +6,6 @@ import { Container, Content, List, ListItem, Thumbnail,
 import {
   StatusBar,View,ToastAndroid,BackAndroid
 } from 'react-native';
-import ActionButton from 'react-native-action-button';
 
 
 export default class AssetTickets extends Component {
@@ -86,13 +85,12 @@ export default class AssetTickets extends Component {
                   }>
               </List>
           </Content>
-          <ActionButton
-            buttonColor="rgb(49,27,146)"
-            offsetX={15}
-            offsetY={15}
-            icon={<Icon name="md-help" style={{ color: 'white'}}/>}
-            onPress={() => {this._navigate('RaiseTicket')}}
-          />            
+          <Button style={{backgroundColor:'#4527a0', alignSelf: 'center', marginTop: 20, marginBottom: 20 }}
+                onPress={() => this._navigate('RaiseTicket')}>
+                <Icon name='ios-send' />
+                  Raise Support Ticket
+              </Button>
+                   
           </View> 
       </Container>
       );

@@ -124,7 +124,7 @@ export default class TicketDetail extends Component {
                   </ListItem>
 
                    <ListItem>
-                      <Thumbnail source={{uri: 'https://cdn1.iconfinder.com/data/icons/car-service-3/512/worker-512.png' }} />
+                      <Thumbnail source={require('../Images/user.png')} />
                       <Text>{this.props.data.name}</Text>
                       <Text note>{this.props.data.date}</Text>
                       <View style={{width:80}}>

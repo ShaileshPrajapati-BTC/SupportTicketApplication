@@ -95,14 +95,13 @@ export default class Assets extends Component {
 
                 <ListItem>
                   <InputGroup >
-                    <Input multiline={true} stackedLabel label="Companay Name"/>
+                    <Input multiline={true} stackedLabel label="Company Name"/>
                   </InputGroup>
                 </ListItem>
               </List>
 
               <Button style={{backgroundColor:'#4527a0', alignSelf: 'center', marginTop: 20, marginBottom: 20 }}
                 onPress={() => this.sendRequest()}>
-                <Icon name='ios-send' />
                   Add Asset
               </Button>
             </View>

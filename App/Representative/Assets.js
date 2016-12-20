@@ -3,7 +3,6 @@ import {  Container, Content, List, ListItem, Thumbnail,Header,Title,
           Text, Badge,Picker,Icon,InputGroup,Input,Button,Footer,FooterTab } from 'native-base';
 
 import {View,StatusBar,BackAndroid} from 'react-native';
-import ActionButton from 'react-native-action-button';
 
 
 const asset_data =[
@@ -75,6 +74,9 @@ export default class Assets extends Component {
                   <Icon name='ios-arrow-back' />
               </Button>
               <Title>My Asset</Title>
+               <Button transparent onPress={() => {this._navigate('RAddAsset')}}>
+                  <Icon name='md-add' />
+              </Button>
           </Header>
            <StatusBar
            backgroundColor="#4527a0"
@@ -91,13 +93,6 @@ export default class Assets extends Component {
                   }>
               </List>
             </Content>
-          <ActionButton
-            buttonColor="rgb(49,27,146)"
-            offsetX={15}
-            offsetY={15}
-            icon={<Icon name="md-add" style={{ color: 'white'}}/>}
-            onPress={() => {this._navigate('RAddAsset')}}
-          />            
           </View> 
       </Container>
     );

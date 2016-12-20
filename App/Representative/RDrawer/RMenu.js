@@ -37,7 +37,7 @@ export default class Menu extends Component {
     return (
      <Container backgroundColor='white'>
       <Content>
-        <Image style={{ height: 150}}source={{uri: 'https://fedoraproject.org/w/uploads/6/6b/Artwork_F8Themes_Infinity_Round3Scratch_infinitelines-plain.png'}}>
+        <Image style={{ height: 150}} source={require('../../Images/drawer.png')}>
           
           <View style={{flex:1,flexDirection:'row',padding:10,top:80}}>
               <Text style={{color:'white',left:15}}>Laxmikant Berde</Text>

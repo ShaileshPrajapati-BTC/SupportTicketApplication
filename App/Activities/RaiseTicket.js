@@ -42,9 +42,15 @@ export default class RaiseTicket extends Component {
     return true;
   }
 
-  sendRequest(){
-    ToastAndroid.show('Your Ticket is Raised Successfully',ToastAndroid.LONG,ToastAndroid.CENTER,);
-    this._navigate('Home');    
+  sendRequest(id){
+    if(id=='1'){
+      ToastAndroid.show('Your Ticket is Raised Successfully',ToastAndroid.LONG,ToastAndroid.CENTER,);
+      this._navigate('Home');
+    }
+    else{
+      ToastAndroid.show('Your Ticket is Cancelled',ToastAndroid.LONG,ToastAndroid.CENTER,);
+      this.props.navigator.pop(); 
+    }
   }
 
   onValueChange (value: string) {
@@ -77,7 +83,7 @@ export default class RaiseTicket extends Component {
                     mode="dropdown"
                     selectedValue={this.state.selected1}
                     onValueChange={this.onValueChange.bind(this)}>
-                    <Item label="Hydraulic Excavators," value="1" />
+                    <Item label="Hydraulic Excavators" value="1" />
                     <Item label="Aggregate Crushers" value="2" />
                     <Item label="Loader Backhoes" value="3" />
                     <Item label="Compactor" value="4" />
@@ -96,12 +102,16 @@ export default class RaiseTicket extends Component {
                   </InputGroup>
                 </ListItem>
               </List>
-
-              <Button style={{backgroundColor:'#4527a0', alignSelf: 'center', marginTop: 20, marginBottom: 20 }}
-                onPress={() => this.sendRequest()}>
-                <Icon name='ios-send' />
-                  Raise Support Ticket
+            <View style={{flex: 1, flexDirection: 'row',justifyContent:'center'}}>
+              <Button style={{backgroundColor:'#4527a0', alignSelf: 'center', marginTop: 20,marginBottom:20,width:100 }}
+                onPress={() => this.sendRequest('1')}>
+                  Ok
               </Button>
+              <Button style={{backgroundColor:'#808080', alignSelf: 'center', marginTop: 20,marginBottom:20,width:100,left:15 }}
+                onPress={() => this.sendRequest('2')}>
+                  Cancel
+              </Button>
+            </View>
             </View>
           </Content> 
       </Container>

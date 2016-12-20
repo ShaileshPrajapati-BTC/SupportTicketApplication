@@ -5,7 +5,6 @@ import {  Container, Content, List, ListItem, Thumbnail,
 import {View} from 'react-native';
 import Drawer from './Drawer/Drawer.js'
 
-import ActionButton from 'react-native-action-button';
 
 const asset_data =[
 {
@@ -34,7 +33,23 @@ const asset_data =[
 },
 {
   asset:'Reaction Turbines',
-  id:'987654327',
+  id:'987654328',
+},
+{
+  asset:'Pelton Turbines',
+  id:'987654329',
+},
+{
+  asset:'Reaction Turbines',
+  id:'987654330',
+},
+{
+  asset:'Wheel CI Casting',
+  id:'987654331',
+},
+{
+  asset:'Water Pump Component',
+  id:'987654332',
 }
 ];
 
@@ -69,13 +84,12 @@ export default class Assets extends Component {
                   }>
               </List>
             </Content>
-            <ActionButton
-              buttonColor="rgb(49,27,146)"
-              offsetX={15}
-              offsetY={15}
-              icon={<Icon name="md-help" style={{ color: 'white'}}/>}
-              onPress={() => {this._navigate('RaiseTicket')}}
-            />            
+            <Button style={{backgroundColor:'#4527a0', alignSelf: 'center', marginTop: 20, marginBottom: 20 }}
+                onPress={() => this._navigate('RaiseTicket')}>
+                <Icon name='ios-send' />
+                  Raise Support Ticket
+              </Button>
+            
           </View> 
       </Container>
     );
